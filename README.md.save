@@ -1,1 +1,15 @@
+Creaación de un servidor Express para la visualización del registro de usuarios de una compañía mediante una API
 
+Se utilizaron los paquetes para distintas funcionalizades en el programa:
+Express
+Axios
+Uudi
+Moment
+Lodash
+Chalk
+
+Se utiliza los datos de la API: 'https://randomuser.me/api/'
+
+Para ejecutar el servidor se debe ejecutarlo y abrir el navegador accediendo a 
+http://localhost:4000/registrar-usuario para registrar un nuevo usuario.
+Luego, consulta todos los usuarios registrados en http://localhost:4000/usuarios.
