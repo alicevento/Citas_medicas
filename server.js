@@ -51,15 +51,31 @@ app.get('/usuarios', (req, res) => {
       timestamp: user.timestamp
   }));
 
-  const usuariosFiltrados = {
-      hombres,
-      mujeres
-  };
+  // Construir el HTML para mostrar en el navegador
+  const htmlContent = `
+  <html>
+      <head>
+          <title>Usuarios Registrados</title>
+      </head>
+      <body>
+          <h1>Usuarios Registrados</h1>
+          <h2>Hombres</h2>
+          <ul>
+              ${hombres.map(user => `<li>${user.nombre} ${user.apellido} - ID: ${user.id} - ${user.timestamp}</li>`).join('')}
+          </ul>
+          <h2>Mujeres</h2>
+          <ul>
+              ${mujeres.map(user => `<li>${user.nombre} ${user.apellido} - ID: ${user.id} - ${user.timestamp}</li>`).join('')}
+          </ul>
+      </body>
+  </html>
+`;
 
-  // Imprimir en la consola con fondo blanco y texto azul
-  console.log(chalk.white.bgBlue.bold('Lista de usuarios registrados:'));
-  console.log(chalk.white.bgBlue.bold(JSON.stringify(usuariosFiltrados, null, 2))); 
-  res.json(usuariosFiltrados);
+// Imprimir en la consola con fondo blanco y texto azul
+console.log(chalk.white.bgBlue.bold('Lista de usuarios registrados (HTML):'));
+console.log(chalk.white.bgBlue.bold(htmlContent)); 
+
+res.send(htmlContent);
 });
 
 
